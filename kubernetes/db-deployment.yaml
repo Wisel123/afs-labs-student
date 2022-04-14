@@ -23,6 +23,6 @@ spec:
         - secretRef:
             name: db-secret
         name: db-deployment
-        image: docker pull harbor.dev.afsmtddso.com/lakum/db:971c881-9b558c4
+        image: harbor.dev.afsmtddso.com/lakum/db:971c881-9b558c4
         ports:
         - containerPort: 5432

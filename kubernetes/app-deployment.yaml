@@ -23,6 +23,6 @@ spec:
         - secretRef:
             name: db-secret
         name: app-deployment
-        image: docker pull harbor.dev.afsmtddso.com/lakum/app:971c881-9b558c4
+        image: harbor.dev.afsmtddso.com/lakum/app:971c881-9b558c4
         ports:
         - containerPort: 5000
