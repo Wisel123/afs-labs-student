@@ -206,7 +206,11 @@ def show_account():
 
     customer = db.session.query(Customer).filter(Customer.email == session['email']).one()
 
-    return render_template("account.html", customer=customer)
+    if os.environ["LOCATION_FEATURE_ENABLED"] == "True":
+        pickups = db.session.query(Pickup).filter(Pickup.pickup_id > 1).all()
+        return render_template("locations.html", pickups=pickups)
+    else:
+        return render_template("coming-soon.html")
 
 
 @app.route('/locations')
@@ -222,7 +226,7 @@ def show_cart():
     """Query session for cart contents and display results"""
     
     # send flag for feature toggle to cart page
-    return render_template("cart.html")
+    return render_template("cart.html", flag=os.environ["LOCATION_FEATURE_ENABLED"])
 
 
 @app.route('/cart', methods=['POST'])
